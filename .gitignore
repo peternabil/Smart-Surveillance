@@ -1,0 +1,9 @@
+.vscode
+.vscode/settings.json
+.vscode/.prettierrc
+people_counter/object_detection/weights/*
+people_counter/object_detection/cfg/*
+__pycache__
+pretrained_models
+*.weights
+.DS_Store
