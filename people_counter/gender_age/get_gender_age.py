@@ -6,7 +6,7 @@ import argparse
 from contextlib import contextmanager
 from omegaconf import OmegaConf
 from tensorflow.keras.utils import get_file
-from gender_age.src.factory import get_model
+from people_counter.gender_age.src.factory import get_model
 import PIL
 
 
@@ -52,7 +52,7 @@ def main_driver(img,model,detector,img_size):
 def detect_cropped_imgs(persons,img_size,model):
     predictions = []
     for person in persons:
-        person_img = cv2.imread('persons-imgs/'+person)
+        person_img = cv2.imread('people_counter/object_detection/persons-imgs/'+person)
         # print(person_img.shape)
         person_img = cv2.resize(person_img,(img_size,img_size))
         use_arr = np.array([person_img])

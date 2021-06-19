@@ -7,3 +7,13 @@ __pycache__
 pretrained_models
 *.weights
 .DS_Store
+people_counter/data
+people_counter/data/1200x800.jpg
+people_counter/data/diverse-group-of-people.jpg
+people_counter/data/im-163221.jpg
+people_counter/results
+db.sqlite3
+people_counter/object_detection/persons-imgs
+smartSurv/__pycache__
+smartSurv/__pycache__/__init__.cpython-38.pyc
+smartSurv/__pycache__/settings.cpython-38.pyc
