@@ -77,26 +77,26 @@ def index(request):
   # cv2.imwrite("people_counter/results/result.jpg",image)
   return render(request,'index.html')
 
-# def test_video():
-#   videopath='test-videos/trial-clip3.mov'
-#   cap= cv2.VideoCapture(videopath)
-#   cap.set(cv2.CAP_PROP_FPS, 10)
-#   print(cap.get(cv2.CAP_PROP_FPS))
-#   img_array = []
-#   size = ()
-#   while(cap.isOpened()):
-#       ret, frame = cap.read()
-#       if ret == False:
-#           break
-#       img,preds = mainDriver.main(frame,model,age_gen_model,img_size,draw_output=True)
-#       # cv2.imwrite('kang'+str(i)+'.jpg',frame)
-#       height, width, layers = img.shape
-#       size = (width,height)
-#       img_array.append(img)
-#       # cv2.waitKey(100)
-#   cap.release()
-#   cv2.destroyAllWindows()
-#   out = cv2.VideoWriter('output-trial-clip4.mp4',cv2.VideoWriter_fourcc(*'DIVX'), 50, size)
-#   for i in range(len(img_array)):
-#       out.write(img_array[i])
-#   out.release()
+def test_video():
+  videopath='test-videos/trial-clip3.mov'
+  cap= cv2.VideoCapture(videopath)
+  cap.set(cv2.CAP_PROP_FPS, 10)
+  print(cap.get(cv2.CAP_PROP_FPS))
+  img_array = []
+  size = ()
+  while(cap.isOpened()):
+      ret, frame = cap.read()
+      if ret == False:
+          break
+      img,preds = mainDriver.main(frame,model,age_gen_model,img_size,draw_output=True)
+      # cv2.imwrite('kang'+str(i)+'.jpg',frame)
+      height, width, layers = img.shape
+      size = (width,height)
+      img_array.append(img)
+      # cv2.waitKey(100)
+  cap.release()
+  cv2.destroyAllWindows()
+  out = cv2.VideoWriter('output-trial-clip4.mp4',cv2.VideoWriter_fourcc(*'DIVX'), 50, size)
+  for i in range(len(img_array)):
+      out.write(img_array[i])
+  out.release()
