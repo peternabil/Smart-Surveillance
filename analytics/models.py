@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class CameraArea(models.Model):
-    id = models.UUIDField()
     name = models.CharField(max_length=100)
     capacity = models.BigIntegerField()
     def __str__(self):

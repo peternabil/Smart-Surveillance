@@ -64,16 +64,16 @@ age_gen_model.load_weights(weight_file)
 
 
 def index(request):
-  img = cv2.imread('people_counter/data/diverse-group-of-people.jpg')
-  image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)
+  # img = cv2.imread('people_counter/data/diverse-group-of-people.jpg')
+  # image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)
   # print(image)
-  im = Image.fromarray(image)
-  buffered = BytesIO()
-  im.save(buffered, format="jpeg")
-  im_bytes = buffered.getvalue()  # im_bytes: image in binary format.
-  im_b64 = base64.b64encode(im_bytes)
-  im_b64 = "data:image/jpeg;charset=utf-8;base64" + (str(im_b64).replace("b'","")[:-1])
-  print(im_b64)
+  # im = Image.fromarray(image)
+  # buffered = BytesIO()
+  # im.save(buffered, format="jpeg")
+  # im_bytes = buffered.getvalue()  # im_bytes: image in binary format.
+  # im_b64 = base64.b64encode(im_bytes)
+  # im_b64 = "data:image/jpeg;charset=utf-8;base64" + (str(im_b64).replace("b'","")[:-1])
+  # print(im_b64)
   # cv2.imwrite("people_counter/results/result.jpg",image)
   return render(request,'index.html')
 
