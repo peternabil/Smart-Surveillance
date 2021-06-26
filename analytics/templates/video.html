@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Videos{% endblock %}
+
+{% block content %}
+    <div>
+        {% for video in videos %}
+        <h1>{{video.name}}</h1> 
+        <form action='runmodels' method='GET'>
+            <input style="display: none;" name="video" value="{{video.id}}" type="text">
+            <button class="btn btn-primary" type='submit'>Run Analytics</button>
+        </form>
+        <video width="500" height="300" controls >
+        <source src="{{ video.video.url }}" type="video/mp4">        
+        {% endfor %}
+    </div>
+{% endblock %}

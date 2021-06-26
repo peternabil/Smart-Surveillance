@@ -4,11 +4,12 @@ from django.db import models
 class CameraArea(models.Model):
     name = models.CharField(max_length=100)
     capacity = models.BigIntegerField()
+
     def __str__(self):
         return self.name
+
     class Meta:
         ordering = ['capacity']
-
 
 class Video(models.Model):
     name = models.CharField(max_length=100)
@@ -19,7 +20,6 @@ class Video(models.Model):
     class Meta:
         verbose_name = 'video'
         verbose_name_plural = 'videos'
+
     def __str__(self):
         return self.name
-
-

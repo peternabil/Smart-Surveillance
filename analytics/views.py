@@ -1,3 +1,5 @@
+from django.http.request import HttpRequest
+from django.http.response import HttpResponse
 from analytics.models import Video
 from django.shortcuts import render,redirect
 
@@ -22,5 +24,9 @@ def display(request):
     context ={
         'videos':videos,
     }
-     
-    return render(request,'videos.html',context)
+    print(videos)
+    return render(request,'video.html',context)
+
+def runAnalytic(request):
+    print(request.GET['video'])
+    return HttpResponse(request.GET['video'])
