@@ -5,13 +5,22 @@
 {% block content %}
     <div>
         {% for video in videos %}
-        <h1>{{video.name}}</h1> 
-        <form action='runmodels' method='GET'>
+        <br>
+        <div class="card" style="width: 100%;">
+            {% comment %} <img src="{{ video.video.url }}" class="card-img-top" alt="..."> {% endcomment %}
+            <div class="card-body">
+                <h5 class="card-title">{{video.name}}</h5>
+                <p class="card-text">{{ video.datetime |date:'D, m-d-Y' }}</p>
+                <p class="card-text">{{ video.datetime |date:'H:i:s A' }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        {% comment %} <form action='runmodels' method='GET'>
             <input style="display: none;" name="video" value="{{video.id}}" type="text">
             <button class="btn btn-primary" type='submit'>Run Analytics</button>
         </form>
         <video width="500" height="300" controls >
-        <source src="{{ video.video.url }}" type="video/mp4">        
+        <source src="{{ video.video.url }}" type="video/mp4">         {% endcomment %}
         {% endfor %}
     </div>
 {% endblock %}
