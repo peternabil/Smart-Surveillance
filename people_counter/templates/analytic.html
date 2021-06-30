@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Analytic man{% endblock %}
+
+{% block content %}
+    <div>
+    <br>
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <video width="500" height="300" controls >
+            <source src="{{ video.video.url }}" type="video/mp4">
+            <h5 class="card-title">{{video.name}}</h5>
+            <p class="card-text">{{ video.datetime |date:'D, m-d-Y' }}</p>
+            <p class="card-text">{{ video.datetime |date:'H:i:s A' }}</p>
+        
+    </div>
+    </div>
+
+          
+</div>
+{% endblock %}

@@ -62,7 +62,9 @@ cfg = OmegaConf.from_dotlist([f"model.model_name={model_name}", f"model.img_size
 age_gen_model = get_model(cfg)
 age_gen_model.load_weights(weight_file)
 
-
+def runAnalytic(request,video_id):
+    print(video_id)
+    return HttpResponse(video_id)
 def index(request):
   # img = cv2.imread('people_counter/data/diverse-group-of-people.jpg')
   # image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)

@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Videos{% endblock %}
+{% block title %}Camera Areas{% endblock %}
 
 {% block content %}
     <div>
-        {% for video in videos %}
+        {% for area in areas %}
         <br>
         <div class="card" style="width: 100%;">
             {% comment %} <img src="{{ video.video.url }}" class="card-img-top" alt="..."> {% endcomment %}
             <div class="card-body">
-                <h5 class="card-title">{{video.name}}</h5>
-                <p class="card-text">{{ video.datetime |date:'D, m-d-Y' }}</p>
-                <p class="card-text">{{ video.datetime |date:'H:i:s A' }}</p>
-                <a href="/data/runmodels/{{video.id}}" class="btn btn-primary">Run Analytic</a>
+                <h5 class="card-title">{{area.name}}</h5>
+                <p class="card-text">{{ area.capacity }}</p>
+                <a href="/data/videos/{{area.id}}" class="btn btn-primary">Go to videos</a>
             </div>
         </div>
         {% comment %} <form action='runmodels' method='GET'>

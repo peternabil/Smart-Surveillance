@@ -21,5 +21,5 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('people/', include('people_counter.urls')),
-    path('videos/', include('analytics.urls')),
+    path('data/', include('analytics.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
