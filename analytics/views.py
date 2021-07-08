@@ -1,5 +1,6 @@
+from MainApp.models import Video
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from io import BytesIO
 from PIL import Image,ImageDraw,ImageFont
 import base64
@@ -63,8 +64,14 @@ age_gen_model = get_model(cfg)
 age_gen_model.load_weights(weight_file)
 
 def runAnalytic(request,video_id):
-    print(video_id)
-    return HttpResponse(video_id)
+    video = get_object_or_404(Video,id = video_id)
+    context ={
+        'video':video,
+    }
+    print(video.video.url)
+    test_video(video.video.url)
+    return render(request,'analytic.html',context)
+
 def index(request):
   # img = cv2.imread('Analytics/data/diverse-group-of-people.jpg')
   # image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)
@@ -79,26 +86,23 @@ def index(request):
   # cv2.imwrite("Analytics/results/result.jpg",image)
   return render(request,'index.html')
 
-def test_video():
-  videopath='test-videos/trial-clip3.mov'
+def test_video(videopath):
+  videopath = videopath[1:]
+  print(videopath)
   cap= cv2.VideoCapture(videopath)
   cap.set(cv2.CAP_PROP_FPS, 10)
   print(cap.get(cv2.CAP_PROP_FPS))
-  img_array = []
-  size = ()
+  preds = []
   while(cap.isOpened()):
       ret, frame = cap.read()
       if ret == False:
           break
-      img,preds = mainDriver.main(frame,model,age_gen_model,img_size,draw_output=True)
-      # cv2.imwrite('kang'+str(i)+'.jpg',frame)
-      height, width, layers = img.shape
-      size = (width,height)
-      img_array.append(img)
-      # cv2.waitKey(100)
+      boxes,scores, classes, nums,class_names,preds = mainDriver.main(frame,model,age_gen_model,img_size,draw_output=False)
+      preds.append(preds)
   cap.release()
   cv2.destroyAllWindows()
-  out = cv2.VideoWriter('output-trial-clip4.mp4',cv2.VideoWriter_fourcc(*'DIVX'), 50, size)
-  for i in range(len(img_array)):
-      out.write(img_array[i])
-  out.release()
+  return HttpResponse(preds)
+  # out = cv2.VideoWriter('output-trial-clip4.mp4',cv2.VideoWriter_fourcc(*'DIVX'), 50, size)
+  # for i in range(len(img_array)):
+  #     out.write(img_array[i])
+  # out.release()

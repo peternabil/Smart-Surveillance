@@ -5,17 +5,34 @@
 {% block content %}
     <div>
     <br>
-    <div class="card" style="width: 100%;">
+    <div class="card text-white bg-dark" style="width: 100%;">
         <div class="card-body">
-            <video width="500" height="300" controls >
-            <source src="{{ video.video.url }}" type="video/mp4">
-            <h5 class="card-title">{{video.name}}</h5>
-            <p class="card-text">{{ video.datetime |date:'D, m-d-Y' }}</p>
-            <p class="card-text">{{ video.datetime |date:'H:i:s A' }}</p>
-        
-    </div>
-    </div>
+            <h1 class="card-title">Choose the analytical operation you want to run</h1>
+            <div class="video-container">
+                <video class="img-fluid" height="40" controls >
+                <source src="{{ video.video.url }}" type="video/mp4">
+            </div>
+            <h5 class="card-title">
+                <h2>
+                    {{video.name}}
+                </h2>
+            </h5>
+            <p class="card-text">
+                <h3>
+                    {{ video.datetime |date:'D, m-d-Y' }}
+                    {{ video.datetime |date:'H:i:s A' }}
+                </h3>
+                <h3>
+                </h3>
+            </p>
+            <div class="flex-body">
+                <a href="/data/runmodels/{{video.id}}" class="btn btn-primary">Run the Gender/Age detector</a>
+                <a href="/data/runmodels/{{video.id}}" class="btn btn-secondary">Run the people counter</a>
+                <a href="/data/runmodels/{{video.id}}" class="btn btn-success">Run Both</a>    
+            </div>
 
-          
+        </div>
+    </div>
 </div>
+<br>
 {% endblock %}
