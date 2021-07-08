@@ -1,25 +1,18 @@
+from MainApp.models import Video
 from django.db import models
 
 # Create your models here.
-class CameraArea(models.Model):
-    name = models.CharField(max_length=100)
-    capacity = models.BigIntegerField()
+class Analytic(models.Model):
+    video = models.ForeignKey(to=Video,on_delete=models.CASCADE)
+    avg_persons_num = models.BigIntegerField()
+    avg_male = models.BigIntegerField()
+    avg_female = models.BigIntegerField()
+    def create_analytic(self, video):
+        analytic = self.create(video = video)
+        return analytic
 
     def __str__(self):
-        return self.name
+        return self.video.name
 
     class Meta:
-        ordering = ['capacity']
-
-class Video(models.Model):
-    name = models.CharField(max_length=100)
-    video = models.FileField(upload_to='videos/')
-    datetime = models.DateTimeField()
-    camera_area = models.ForeignKey(to=CameraArea,on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'video'
-        verbose_name_plural = 'videos'
-
-    def __str__(self):
-        return self.name
+        ordering = ['avg_persons_num']

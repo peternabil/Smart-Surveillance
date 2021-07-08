@@ -1,5 +1,5 @@
 import tensorflow as tf
-from people_counter.object_detection.utils import load_class_names, output_boxes, draw_outputs, resize_image,crop_persons
+from Analytics.object_detection.utils import load_class_names, output_boxes, draw_outputs, resize_image,crop_persons
 import cv2
 import numpy as np
 from pathlib import Path
@@ -7,8 +7,8 @@ import dlib
 from contextlib import contextmanager
 from omegaconf import OmegaConf
 from tensorflow.keras.utils import get_file
-from people_counter.gender_age.src.factory import get_model
-from people_counter.gender_age.get_gender_age import detect_cropped_imgs
+from Analytics.gender_age.src.factory import get_model
+from Analytics.gender_age.get_gender_age import detect_cropped_imgs
 
 # physical_devices = tf.config.experimental.list_physical_devices('GPU')
 # assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
@@ -16,7 +16,7 @@ from people_counter.gender_age.get_gender_age import detect_cropped_imgs
 
 model_size = (416, 416,3)
 
-class_name = 'people_counter/object_detection/data/coco.names'
+class_name = 'Analytics/object_detection/data/coco.names'
 max_output_size = 40
 max_output_size_per_class= 20
 

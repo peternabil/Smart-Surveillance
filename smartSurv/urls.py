@@ -20,6 +20,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('people/', include('people_counter.urls')),
-    path('data/', include('analytics.urls')),
+    path('people/', include('Analytics.urls')),
+    path('data/', include('MainApp.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

@@ -75,6 +75,6 @@ def crop_persons(img, boxes, objectness, classes, nums):
             # print(crop_img.shape)
             name = "Object"+str(i)+".jpg"
             persons.append(name)
-            cv2.imwrite('people_counter/object_detection/persons-imgs/'+name,crop_img)
+            cv2.imwrite('Analytics/object_detection/persons-imgs/'+name,crop_img)
     return persons
 

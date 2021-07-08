@@ -1,6 +1,6 @@
 import numpy as np
-from people_counter.object_detection.yolov3 import YOLOv3Net
-from people_counter.object_detection.yolov3 import parse_cfg
+from Analytics.object_detection.yolov3 import YOLOv3Net
+from Analytics.object_detection.yolov3 import parse_cfg
 
 def load_weights(model,cfgfile,weightfile):
     # Open the weights file
