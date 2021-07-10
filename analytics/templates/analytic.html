@@ -26,13 +26,22 @@
                 </h3>
             </p>
             <div class="flex-body">
-                <a href="/data/runmodels/{{video.id}}" class="btn btn-primary">Run the Gender/Age detector</a>
-                <a href="/data/runmodels/{{video.id}}" class="btn btn-secondary">Run the people counter</a>
-                <a href="/data/runmodels/{{video.id}}" class="btn btn-success">Run Both</a>    
+                <a href="/data/runmodels/{{video.id}}" id="gender-age" class="btn btn-primary">Run the Gender/Age detector</a>
+                <a href="/data/runmodels/{{video.id}}" id="yolo" class="btn btn-secondary">Run the people counter</a>
+                <a href="/data/runmodels/{{video.id}}" id="gender-age-yolo" class="btn btn-success">Run Both</a>    
+            </div>
+            <div class="progress" id="progress" style="display: none;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
             </div>
 
         </div>
     </div>
 </div>
+<script>
+    var genderAgeButton = document.getElementById('gender-age');
+    genderAgeButton.onclick = function() {
+        document.getElementById('progress').style.display = 'block';
+    }
+</script>
 <br>
 {% endblock %}

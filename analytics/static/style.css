@@ -17,3 +17,6 @@
     flex-wrap: wrap;
     align-content: space-between;
 }
+.progress{
+    margin: 5%;
+}

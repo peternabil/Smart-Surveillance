@@ -53,7 +53,7 @@ def detect_cropped_imgs(persons,img_size,model):
     predictions = []
     for person in persons:
         person_img = cv2.imread('Analytics/object_detection/persons-imgs/'+person)
-        print(img_size)
+        print(person_img.shape)
         person_img = cv2.resize(person_img,(img_size,img_size))
         use_arr = np.array([person_img])
         # print(use_arr.shape)
@@ -66,6 +66,7 @@ def detect_cropped_imgs(persons,img_size,model):
         # label = "{}, {}".format(int(predicted_age[0]),"M" if predicted_gender[0][0] < 0.5 else "F")
         predictions.append([int(predicted_age[0]),"M" if predicted_gender[0][0] < 0.5 else "F"])
     return predictions
+
 
 
 

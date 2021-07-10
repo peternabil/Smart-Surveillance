@@ -69,22 +69,42 @@ def runAnalytic(request,video_id):
         'video':video,
     }
     print(video.video.url)
-    test_video(video.video.url)
+    test_img()
+    # test_video(video.video.url)
     return render(request,'analytic.html',context)
 
 def index(request):
-  # img = cv2.imread('Analytics/data/diverse-group-of-people.jpg')
-  # image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)
-  # print(image)
-  # im = Image.fromarray(image)
-  # buffered = BytesIO()
-  # im.save(buffered, format="jpeg")
-  # im_bytes = buffered.getvalue()  # im_bytes: image in binary format.
-  # im_b64 = base64.b64encode(im_bytes)
-  # im_b64 = "data:image/jpeg;charset=utf-8;base64" + (str(im_b64).replace("b'","")[:-1])
-  # print(im_b64)
-  # cv2.imwrite("Analytics/results/result.jpg",image)
+  img = cv2.imread('Analytics/data/example.jpg')
+  image,preds = mainDriver.main(img,model,age_gen_model,img_size,True)
+  print(image)
+  im = Image.fromarray(image)
+  buffered = BytesIO()
+  im.save(buffered, format="jpeg")
+  im_bytes = buffered.getvalue()  # im_bytes: image in binary format.
+  im_b64 = base64.b64encode(im_bytes)
+  im_b64 = "data:image/jpeg;charset=utf-8;base64" + (str(im_b64).replace("b'","")[:-1])
+  print(im_b64)
+  cv2.imwrite("Analytics/results/result.jpg",image)
   return render(request,'index.html')
+
+def test_img():
+  img = cv2.imread('Analytics/data/example.jpg')
+  print(img)
+  boxes,scores, classes, nums,class_names,preds = mainDriver.main(img,model,age_gen_model,img_size,draw_output=False)
+  print("boxes:")
+  print(boxes)
+  print("scores:")
+  print(scores)
+  print("classes:")
+  print(classes)
+  print("nums:")
+  print(nums)
+  print("class_names:")
+  print(class_names)
+  print("preds:")
+  print(preds)
+
+  # cv2.imwrite("output.png",res)
 
 def test_video(videopath):
   videopath = videopath[1:]
